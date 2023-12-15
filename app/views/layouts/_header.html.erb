@@ -9,8 +9,20 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
-          <li class='text-warning'>管理者</li>
-          <li>
+          <% if admin_signed_in? %>
+            <li>
+              <%= link_to destroy_admin_session_path, class: 'text-warning', method: :delete do %>
+                管理者
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to admin_session_path, class: 'text-warning' do %>
+                管理者
+              <% end %>
+            </li>
+          <% end %>
+            <li>
             <%= link_to admin_items_path,class: 'nav-link text-light' do %>
               </i> 商品一覧
             <% end %>
