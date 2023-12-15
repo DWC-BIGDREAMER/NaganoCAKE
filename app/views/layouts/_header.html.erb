@@ -38,33 +38,33 @@
               <i class="fas fa-link"></i> About
             <% end %>
           </li>
-          
+
           <li>
             <%= link_to items_path,class: 'nav-link text-light' do %>
               </i> 商品一覧
             <% end %>
           </li>
-          
+
           <li>
-            <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
+            <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
               <i class="fas fa-user-plus"></i> 新規登録
             <% end %>
           </li>
           <li>
-            <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
+            <%= link_to new_customer_session_path ,class: 'nav-link text-light' do %>
               <i class="fas fa-sign-in-alt"></i> ログイン
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
+            <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
               <i class="fas fa-sign-out-alt"></i> Log out
             <% end %>
           </li>
         </ul>
-        
+
       </div>
     </div>
-    
+
   </nav>
   <div style="height: 10px; background-color: #f9bb02"></div>
 </header>
