@@ -1,0 +1,70 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #0e357f;">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <%= image_tag src="logo_transparent_resize", size: '100x80' %>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto">
+          <li class='text-warning'>管理者</li>
+          <li>
+            <%= link_to admin_items_path,class: 'nav-link text-light' do %>
+              </i> 商品一覧
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to admin_customers_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-users"></i> 会員一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_orders_path, class: 'nav-link text-light' do %>
+              </i> 注文履歴一覧
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to admin_genres_path ,class: 'nav-link text-light' do %>
+              </i> ジャンル一覧
+            <% end %>
+          </li>
+        </ul>
+        <ul class="navbar-nav mr-auto">
+          <li class='text-warning'>客</li>
+          <li>
+            <%= link_to about_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-link"></i> About
+            <% end %>
+          </li>
+          
+          <li>
+            <%= link_to items_path,class: 'nav-link text-light' do %>
+              </i> 商品一覧
+            <% end %>
+          </li>
+          
+          <li>
+            <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-user-plus"></i> 新規登録
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-in-alt"></i> ログイン
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-out-alt"></i> Log out
+            <% end %>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+    
+  </nav>
+  <div style="height: 10px; background-color: #f9bb02"></div>
+</header>
