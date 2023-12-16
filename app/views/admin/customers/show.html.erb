@@ -10,7 +10,7 @@
         </div>
         <div class="col-lg-4 col-md-5 col-sm-3 col-xs-3"></div><!--colを改行させるための空col-->
         
-        <div class="col-xs-4 my-3 mr-2">
+        <div class="col-xs-4 my-3 mr-5">
           <p>会員ID</p>
           <p>氏名</p>
           <p>フリガナ</p>
@@ -32,7 +32,7 @@
           <% if @cus.is_active? %>
             <p class="text-success"><strong>有効</strong></p>
           <% else %>
-            <p class="text-light"><strong>退会</strong></p>
+            <p class="text-secondary"><strong>退会</strong></p>
           <% end %>
           
           <button class="btn">
