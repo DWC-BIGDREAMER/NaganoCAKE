@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
-
-  #devise:管理者用
-  devise_for :admins, skip: [:registrations, :passwards], controllers: {
-    sessions: "admin/sessions"
-  }
-
-  #devise:顧客用
-  devise_for :customers, skip: [:passwards], controllers: {
-    regstrations: "public/regstrations",
-    sessions: "public/sessions"
-  }
-
-
+  devise_for :users
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -57,8 +45,10 @@ Rails.application.routes.draw do
     resources :customers,     only: [:index, :show, :edit, :update]
     resources :genres,        only: [:index, :create, :edit, :update]
     resources :items,         only: [:index, :show, :create, :edit, :update, :new]
-    resources :orders,        only: [:index, :show, :update]
+    resources :orders,        only: [:show, :update]
     resources :order_details, only: [:update]
 
   end
+
+  # このendをめぐってコンフリクト起きそう
 end
