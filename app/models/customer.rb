@@ -3,6 +3,18 @@ class Customer < ApplicationRecord
   has_many :orders
   has_many :cart_items, dependent: :destroy
   has_many :addresses, dependent: :destroy
+  
+  validates :family_name,  :family_name,
+                           :first_name,
+                           :family_name_kana,
+                           :first_name_kana,
+                           :email,
+                           :encrypted_password,
+                           :postcode,
+                           :address,
+                           :telephone_number,
+                           :is_active,
+                           presence: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
