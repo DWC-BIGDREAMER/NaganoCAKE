@@ -1,50 +1,49 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
     <div class="col-lg-10">
-      <h3><%= @cus.family_name %><%= @cus.first_name %>さんの会員詳細</h3>
-    　 <table>
-    　    <tr>
-    　      <th>会員ID</th>
-    　      <td><%= @cus.id %></td>
-    　    </tr>
-    　    <tr>
-    　      <th>氏名</th>
-    　      <td><%= @cus.family_name %> <%= @cus.first_name %></td>
-    　    </tr>
-    　  </table>
-    　  <!--テーブル使う方法とcolで整える方法とどっちがいいか後で考える。-->
-      　<div class="row">
-      　  <div class="col-lg-3">
-      　    <p class="my-0">会員ID</p>
-      　    <p class="my-0">氏名</p>
-      　    <p class="my-0">フリガナ</p>
-      　    <p class="my-0">郵便番号</p>
-      　    <p class="my-0">住所</p>
-      　    <p class="my-0">電話番号</p>
-      　    <p class="my-0">メールアドレス</p>
-      　    <p class="my-0">会員ステータス</p>
-      　  </div>
-      　  <div class="col-lg-8 col-md-6">
-      　    <p class="my-0"><%= @cus.id %></p>
-      　    <p class="my-0"><%= @cus.family_name %> <%= @cus.first_name %><p>
-    　      <p class="my-0"><%= @cus.family_name_kana %> <%= @cus.first_name_kana %><p>
-    　      <p class="my-0"><%= @cus.postcode %></p>
-      　    <p class="my-0"><%= @cus.address %></p>
-      　    <p class="my-0"><%= @cus.telephone_number %></p>
-      　    <p class="my-0"><%= @cus.email %></p>
-      　    <% if @cus.is_active? %>
-      　      <p class="text-succese my-0">有効</p>
-    　      <% else %>
-    　        <p class="text-light my-0">退会</p>
-  　        <% end %>
-      　  </div>
-      　</div>
-      　<button class="btn">
-        　  <%= link_to '編集する',  edit_admin_customer_path(@cus), class: "btn btn-success" %>
-      　</button>
-      　<button class="btn">
-        　  <%= link_to '注文履歴一覧を見る',  admin_root_path, class: "btn btn-primary" %>
-      　</button>
+      
+      <div class="row justify-content-center">
+        
+        <div class="col-lg-2"></div><!--colを改行させるための空col-->
+        <div class="col-sm-auto">
+          <h3 class="bg-light mb-3">　<%= @cus.full_name %>さんの会員詳細　</h3>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-3 col-xs-3"></div><!--colを改行させるための空col-->
+        
+        <div class="col-xs-4 my-3 mr-2">
+          <p>会員ID</p>
+          <p>氏名</p>
+          <p>フリガナ</p>
+          <p>郵便番号</p>
+          <p>住所</p>
+          <p>電話番号</p>
+          <p>メールアドレス</p>
+          <p>会員ステータス</p>
+        </div>
+        
+        <div class="col-xs-5 my-3">
+          <p><%= @cus.id %></p>
+          <p><%= @cus.full_name %></p>
+          <p><%= @cus.full_name_kana %></p>
+          <p><%= @cus.postcode %></p>
+          <p><%= @cus.address %></p>
+          <p><%= @cus.telephone_number %></p>
+          <p><%= @cus.email %></p>
+          <% if @cus.is_active? %>
+            <p class="text-success"><strong>有効</strong></p>
+          <% else %>
+            <p class="text-light"><strong>退会</strong></p>
+          <% end %>
+          
+          <button class="btn">
+            <%= link_to '編集する', edit_admin_customer_path(@cus), class: "btn btn-success" %>
+          </button>
+          <button class="btn">
+            <%= link_to '注文履歴一覧を見る', admin_root_path, class: "btn btn-primary" %>
+          </button>
+          
+        </div>
+      </div>
     </div>
   </div>
 </div>
