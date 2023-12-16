@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   #devise:顧客用
   devise_for :customers, skip: [:passwards], controllers: {
-    regstrations: "public/regstrations",
+    registrations: "public/registrations",
     sessions: "public/sessions"
   }
 
