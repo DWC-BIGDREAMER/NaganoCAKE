@@ -13,7 +13,6 @@ class Customer < ApplicationRecord
                            :postcode,
                            :address,
                            :telephone_number,
-                           :is_active,
                            presence: true
 
   devise :database_authenticatable, :registerable,
