@@ -1,10 +1,11 @@
 class Admin::CustomersController < ApplicationController
+
   def index
     @customers = Customer.all
   end
 
   def show
-    @customer = Customer.find(params[:id])
+    @cus = Customer.find(params[:id])
   end
 
   def edit
@@ -12,5 +13,15 @@ class Admin::CustomersController < ApplicationController
   end
 
   def update
+    @customer = Customer.find(params[:id])
+    customer.update(customer_params)
+    redirect_to admin_customers_path(customer)
   end
+
+private
+
+  def customer_params
+    params.require(:customer).permit(:family_name, :first_name, :familiy_name_kana, :first_name_kana, :email, :encrypted_password, :postcode, :address, :telephone_number, :is_active)
+  end
+
 end

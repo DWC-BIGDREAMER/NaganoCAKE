@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_12_14_083328) do
+ActiveRecord::Schema.define(version: 2023_12_15_085616) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2023_12_14_083328) do
     t.string "encrypted_password", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "remember_created_at"
   end
 
   create_table "cart_items", force: :cascade do |t|
