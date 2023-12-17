@@ -1,1 +1,10 @@
 @use '~bootstrap/scss/bootstrap';
+
+// フォント
+// 使いたいフォントがあれば@importを追加する。
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Hachi+Maru+Pop&family=Kosugi+Maru&family=Lora&display=swap');
+// セレクタ名を適当につけて、font-familyをコピペし、フォントを使いたいhtmlのクラスに該当のフォントのクラスを足すと使える。
+.font-bold{font-family: 'Dela Gothic One', sans-serif;}
+.font-formal{font-family: 'Lora', serif;}
+.font-pop{font-family: 'Hachi Maru Pop', cursive;}
+.font-kosugi{font-family: 'Kosugi Maru', sans-serif;}
