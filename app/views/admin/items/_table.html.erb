@@ -18,7 +18,7 @@
         <% end %>
       </td>
       <!--X,XXX表記になるように、デフォで＄表記だったのでunit追記-->
-      <td><%= number_to_currency(item.price,unit: "¥",strip_insignificant_zeros: true) %></td>
+      <td><%= number_to_currency(item.price,unit: "",strip_insignificant_zeros: true) %></td>
       <td><%= item.genre.name %></td>
       <!--モデルで定義したメソッドから参照して表示するように-->
       <td>

@@ -19,6 +19,10 @@ class Item < ApplicationRecord
       "販売停止中"
     end
   end
-
+  
+  #税込価格
+  def taxed_price
+    (self.price * 1.10).round
+  end
 
 end
