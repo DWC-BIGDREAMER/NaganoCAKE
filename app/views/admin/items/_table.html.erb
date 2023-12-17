@@ -17,11 +17,17 @@
         <%= item.name %>
         <% end %>
       </td>
-      <!--X,XXX表記になるように-->
-      <td><%= number_to_currency(item.price,strip_insignificant_zeros: true) %></td>
+      <!--X,XXX表記になるように、デフォで＄表記だったのでunit追記-->
+      <td><%= number_to_currency(item.price,unit: "",strip_insignificant_zeros: true) %></td>
       <td><%= item.genre.name %></td>
-      <!--ここ後で見直し-->
-      <td><%= item.is_active %></td>
+      <!--モデルで定義したメソッドから参照して表示するように-->
+      <td>
+        <% if item.is_active? %>
+          <span class="text-success font-weight-bold"><%= item.sale_status %></span>
+        <% else %>
+          <span class="text-secondary font-weight-bold"><%= item.sale_status %></span>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </tbody>

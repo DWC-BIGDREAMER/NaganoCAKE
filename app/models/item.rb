@@ -20,6 +20,10 @@ class Item < ApplicationRecord
     end
   end
   
+  #税込価格
+  def taxed_price
+    (self.price * 1.10).round
+  end
   # 税込み価格
   def price_including_tax
     tax = 0.1
