@@ -31,5 +31,10 @@ class Item < ApplicationRecord
     # 3桁区切り表示にする
     intax.to_s(:delimited)
   end 
+  
+  #税込価格
+  def taxed_price
+    (self.price * 1.10).round
+  end
 
 end
