@@ -21,11 +21,12 @@
                 <% end %>
               </td>
               <td><%= customer.email %></td>
+              <!--Customerモデルで設定したメソッドを使う形に変更しました（渡邊）-->
               <td>
                 <% if customer.is_active? %>
-                  <span class="text-success"><strong>有効</strong></span>
+                  <span class="text-success font-weight-bold"><%= customer.cus_status %></span>
                 <% else %>
-                  <span class="text-secondary"><strong>退会</strong></span>
+                  <span class="text-secondary font-weight-bold"><%= customer.cus_status %></span>
                 <% end %>
               </td>
             </tr>

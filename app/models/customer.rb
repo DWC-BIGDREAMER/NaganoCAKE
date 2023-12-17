@@ -3,7 +3,7 @@ class Customer < ApplicationRecord
   has_many :orders
   has_many :cart_items, dependent: :destroy
   has_many :addresses, dependent: :destroy
-  
+
   validates :family_name,  :family_name,
                            :first_name,
                            :family_name_kana,
@@ -29,8 +29,8 @@ class Customer < ApplicationRecord
   end
 
   #会員ステータスの判定
-  def customer_status
-    if is_acvive == false
+  def cus_status
+    if is_active == false
       "退会済会員"
     else
       "現会員"
@@ -41,5 +41,5 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (is_active == true)
   end
-  
+
 end
