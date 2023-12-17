@@ -45,24 +45,40 @@
         </ul>
         <ul class="navbar-nav mr-auto">
           <li class='text-warning'>客</li>
-          <li>
-            <%= link_to about_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-link"></i> About
-            <% end %>
-          </li>
 
-          <li>
-            <%= link_to items_path,class: 'nav-link text-light' do %>
-              </i> 商品一覧
-            <% end %>
-          </li>
           <% if customer_signed_in? %>
+            <!--サインイン後-->
+            <li>
+              <%= link_to customers_my_page_path(current_customer), class: 'nav-link text-light' do %>
+                </i> マイページ
+              <% end %>
+            </li>
+            <li>
+              <%= link_to items_path,class: 'nav-link text-light' do %>
+                </i> 商品一覧
+              <% end %>
+            </li>
+            <li>
+              <%= link_to cart_items_path, class: 'nav-link text-light' do %>
+                カート
+              <% end %>
+            </li>
             <li>
               <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
                 <i class="fas fa-sign-out-alt"></i> Log out
               <% end %>
             </li>
           <% else %>
+            <li>
+              <%= link_to about_path,class: 'nav-link text-light' do %>
+                <i class="fas fa-link"></i> About
+              <% end %>
+            </li>
+            <li>
+              <%= link_to items_path,class: 'nav-link text-light' do %>
+                商品一覧
+              <% end %>
+            </li>
             <li>
               <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
                 <i class="fas fa-user-plus"></i> 新規登録
