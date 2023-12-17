@@ -26,7 +26,7 @@
             <!--ジャンル-->
             <div class="row mb-3">
               <%= f.label "ジャンル", class:"col-2 col-form-label" %>
-              <%= f.text_field :introduction, placeholder:"仮置き",class:"col-5 form-control" %>
+              <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "-- 選択して下さい --",class:"col-5 form-control" %>
             </div>
 
             <!--税抜価格-->
