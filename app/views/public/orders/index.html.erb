@@ -2,7 +2,7 @@
   <div class="row">
     <h3>注文履歴一覧</h3>
     <table class='table table-borderd'>
-      <thead>
+      <thead class="thead-light">
         <tr>
           <th>注文日</th>
           <th>配送先</th>
@@ -13,19 +13,33 @@
         </tr>
       </thead>
       <tbody>
-        <!--変更予定-->
-        <tr>
-          <td>年月日</td>
-          <td>
-            郵便番号
-            住所
-            名前
-          </td>
-          <td>商品名</td>
-          <td>金額</td>
-          <td>入金確認/発送済み</td>
-          <td>詳細ボタン</td>
-        </tr>
+        <% @orders.each do |od| %>
+          <tr>
+            <td><%= od.creatd_at %></td>
+            <td>
+              <%= od.postcode %><br>
+              <%= od.address %><br>
+              <%= od.name %>
+            </td>
+            <td>
+              <% od.items.each do |item| %>
+                <%= item.name %><br/>
+              <% end %>
+            </td>
+            <td>
+              <% od.cart_items.each do |ci| %>
+                <% @total = @total + ci %>
+              <% end %>
+              <%= @total %>
+            </td>
+            <td><%= od.status %></td>
+            <td>
+              <button class="btn">
+                <%= link_to '表示する', order_path(od), class:"btn btn-primary" %>
+              </button>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
