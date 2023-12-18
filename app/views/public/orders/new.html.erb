@@ -1,1 +1,69 @@
-<h3>注文情報入力</h3>
+<div class="container">
+  
+  <div class="row">
+    <div class="offset-1 col">
+      <h3>注文情報入力</h3>
+    </div>
+  </div>
+  
+  <%= form_with model: @order, url: orders_path, method: :post, local: true do |f|  %>
+    <!--支払方法-->
+    <div class="row">
+      <div class="col form-group">
+        <p><strong>支払方法</strong></p>
+        <!--クレカ-->
+        　<%= f.radio_button :payment_method, 0, checked: true %>
+        　<%= f.label :payment_method_0, "クレジットカード" %><br>
+        <!--銀行-->
+        　<%= f.radio_button :payment_method, 1 %>
+        　<%= f.label :payment_method_1, "銀行振込" %>
+      </div>
+    </div>
+    
+    <!--お届け先-->
+    <div class="row">
+      <div class="col form-group">
+        <p><strong>お届け先</strong></p>
+        <!--ご自身の住所--><!--&nbspでレイアウト用のスペース確保-->
+        &nbsp;　<%= f.radio_button :address, 0, checked: true %>
+        &nbsp;　<%= f.label :address_0, "ご自身の住所" %><br>
+        &nbsp;　 　　 〒<%= current_customer.postcode %><%= current_customer.address %><br>
+        &nbsp;　　　　<%= current_customer.full_name %><br>
+          
+        <!--登録済み住所から選択-->
+        &nbsp;　<%= f.radio_button :address, 1 %>
+        &nbsp;　<%= f.label :address_1, "登録済住所から選択", class:"mt-2" %><br>
+        <!--Address.allでいいか不安。current_customer.addressesのほうがいいか？-->
+        &nbsp;　　　 <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :name) %><br>
+        &nbsp;　<%= f.radio_button :address, 2 %>
+        &nbsp;　<%= f.label :address_2, "新しいお届け先", class:"mt-2 mb-0" %>
+        <div class="row">
+          <!--1行目-->
+          <div class="col-auto pr-0">
+            <p class="mt-1">　　　　郵便番号(ハイフンなし)</p>
+            <p class="my-4">　　　　住所</p>
+            <p>　　　　宛名</p>
+          </div>
+          <!--2行目-->
+          <div class="col-auto pr-0">
+            <%= f.text_field :postcode, placeholder: "0000000", class:"form-control" %>
+            <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町", class:"form-control my-2", style:"width: 220%" %>
+            <%= f.text_field :name, placeholder: "令和道子", class:"form-control" %>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!--確認ボタン-->
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <button class="btn">
+          <%= f.submit '確認画面へ進む', class:"btn btn-primary" %>
+        </button>
+      </div>
+    </div>
+    
+  <% end %>
+  
+</div>

@@ -11,6 +11,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def new
+    @order = Order.new
   end
 
   def create
@@ -20,6 +21,20 @@ class Public::OrdersController < ApplicationController
   end
 
   def compretion
+  end
+  
+  private
+  
+  def params_order
+    params.require(:order).permit(:customer_id,
+                                    :name,
+                                    :postcode,
+                                    :address,
+                                    :shipping_fee,
+                                    :total_payment,
+                                    :payment_method,
+                                    :status
+                                    )
   end
 
 end
