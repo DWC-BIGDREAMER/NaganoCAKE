@@ -20,19 +20,6 @@ class Item < ApplicationRecord
     end
   end
   
-
-  # 税込み価格
-  def price_including_tax
-    tax = 0.1
-    intax = price + price * tax
-    
-    # 小数点以下0を消す
-    intax = intax.to_i
-    
-    # 3桁区切り表示にする
-    intax.to_s(:delimited)
-  end 
-  
   #税込価格
   def taxed_price
     (self.price * 1.10).round

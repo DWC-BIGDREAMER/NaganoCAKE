@@ -32,3 +32,16 @@
 #                 amount: 1
 #                 )
 
+# CartItem.create!(
+#                 item_id: 2,
+#                 customer_id: 1,
+#                 amount: 2
+#                 )
+
+3.times do |n|
+  CartItem.create!(
+    item_id: n + 1,
+    customer_id: 1,
+    amount: 1
+    )
+  end
