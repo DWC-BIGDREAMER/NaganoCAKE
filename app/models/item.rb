@@ -42,6 +42,5 @@ class Item < ApplicationRecord
     ["cart_items", "genre", "image_attachment", "image_blob", "order_details"]
   end
 
-
 end
 

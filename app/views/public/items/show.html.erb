@@ -1,0 +1,47 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-2 mx-auto">
+     <%= render 'public/homes/sidebar', genres: @genres %>
+    </div>
+
+    <div class="col-md-10 d-flex">
+
+      <div><%= image_tag @item.get_image(400,400), class:"image" %></div>
+
+      <div class="col-md-6 mx-auto">
+        <h2 class="text-weight-bold"><%= @item.name %></h2>
+        <p class="mt-3 mb-5"><%= @item.introduction %></p>
+
+        <div class="mb-5">
+          <span class="h4 text-weight-bold"><%= number_to_currency(@item.taxed_price, unit: "￥",strip_insignificant_zeros: true) %></span>
+          <small>(税込)</small>
+        </div>
+
+        <% if @item.is_active == true %>
+
+          <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+
+          <div class="d-flex">
+
+          <%= f.select :amount, *[1..10].to_a, {include_blank: "--個数選択--"}, class:"form-select" %>
+
+          <% if customer_signed_in? %>
+            <%= f.hidden_field :customer_id, :value => current_customer.id %>
+          <% end %>
+
+          <%= f.hidden_field :item_id, :value => @item.id %>
+
+          <%= f.submit "カートに入れる", class:"btn btn-success mx-5" %>
+
+          <% end %>
+
+          </div>
+
+        <% else %>
+          <h4 class="text-danger">ただいま販売停止中の商品です。</h4>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
