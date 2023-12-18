@@ -18,29 +18,19 @@
         </div>
 
         <% if @item.is_active == true %>
-
+        
           <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-
-          <div class="d-flex">
-
+            <div class="d-flex">
+          <%= f.hidden_field :item_id, value: @item.id %>
           <%= f.select :amount, *[1..10].to_a, {include_blank: "--個数選択--"}, class:"form-select" %>
-
-          <% if customer_signed_in? %>
-            <%= f.hidden_field :customer_id, :value => current_customer.id %>
+          <%= f.submit "カートに入れる", class:"btn btn-success mx-auto" %>
           <% end %>
-
-          <%= f.hidden_field :item_id, :value => @item.id %>
-
-          <%= f.submit "カートに入れる", class:"btn btn-success mx-5" %>
-
-          <% end %>
-
-          </div>
-
+            </div>
+          
         <% else %>
           <h4 class="text-danger">ただいま販売停止中の商品です。</h4>
         <% end %>
-
+        
       </div>
     </div>
   </div>
