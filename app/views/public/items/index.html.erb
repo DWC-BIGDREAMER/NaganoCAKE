@@ -1,19 +1,14 @@
-<div class="container">
+<div class="container mt-5 ">
   <div class="row">
-
-    <!-- sidebar ジャンル検索が入る -->
-    <div class="col-xl-3 mt-4">
+    <div class="col-md-2 mx-auto">
+     <%= render 'public/homes/sidebar', genres: @genres %>
     </div>
-
-    <!-- items -->
-      <section class="my-4">
-        <h1>商品一覧</h1>
-
-      <!-- 新着商品リストが入る  -->
-        <div></div>
-
-      </section>
-
+    <div class="col-md-10">
+       <h3><strong>商品一覧</strong> (全<%= @items.count %>件)</h3>
+       <div class="row mt-4">
+        <%= render 'index', items: @items %>
+        <div class="d-flex justify-content-center mt-4"><%= paginate @items %></div>
+       </div>
     </div>
   </div>
 </div>

@@ -11,7 +11,7 @@
 
       <div class="row justify-content-center">
       <!--1行目-->
-        <div class="col-lg-2 col-md-4 col-sm-4 my-3">
+        <div class="col-lg-2 col-md-4 col-sm-4 my-1">
           <p class="my-4">氏名</p>
           <p class="my-4">フリガナ</p>
           <p class="my-4 pt-1">郵便番号</p>
@@ -59,7 +59,7 @@
           <%= f.submit '編集内容を保存', class: "btn btn-success btn-block" %>
         </div>
         <div class="col-4">
-          <%= link_to "退会する", customers_withdraw_path, method: :patch, :class => "btn btn-danger ms-3", date: { confirm: "本当に退会しますか？"} %>
+          <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger ms-3"  %>
         </div>
           <% end %>
       </div>

@@ -19,10 +19,29 @@ class Item < ApplicationRecord
       "販売停止中"
     end
   end
-  
+
   #税込価格
   def taxed_price
     (self.price * 1.10).round
   end
 
+  def get_image(width, height)
+    unless image.attached?
+      file_path = Rails.root.join("app/assets/images/sato.cake/皿にケーキ.jpg")
+      image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/*")
+    end
+    image.variant(resize_to_limit: [width, height]).processed
+  end
+
+  #ransackに書けって言われた
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "genre_id", "id", "introduction", "is_active", "name", "price", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["cart_items", "genre", "image_attachment", "image_blob", "order_details"]
+  end
+
+
 end
+
