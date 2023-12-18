@@ -33,5 +33,15 @@ class Item < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
 
+  #ransackに書けって言われた
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "genre_id", "id", "introduction", "is_active", "name", "price", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["cart_items", "genre", "image_attachment", "image_blob", "order_details"]
+  end
+
+
 end
 
