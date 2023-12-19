@@ -67,14 +67,11 @@
       <div class="col-lg-2 col-md-3 col-sm-3 ml-auto align-self-center border border-dark bg-light">
         <span>合計金額</span>
       </div>
-      <!--合計金額は一旦ci.sumで仮置き。-->
+      
       <div class="col-lg-2 col-md-3 col-sm-3 mr-3 align-self-center border border-dark">
         
         <span>
-          <% @cart_items.each do |ci| %>
-            <% @total = @total + ci.sum %>
-          <% end %>
-          <%= @total.to_s(:delimited) %>
+          <%= @cart_items.sum(&:sum).to_s(:delimited) %>
         </span>
         
       </div>
