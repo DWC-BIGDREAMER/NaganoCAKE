@@ -1,5 +1,19 @@
-<%= search_form_for @q, local: true do |f| %>
-   <%= f.search_field :name_cont, class: 'form-control', placeholder: 'Search' %>
-   <!--ここ後でfontawesome導入-->
-   <%= f.submit '検索', class: 'btn btn-primary' %>
+<% if admin_signed_in? %>
+   <%= search_form_for @p, url: admin_search_path do |cus| %>
+      <div class="form-inline">
+         <%= cus.search_field :family_name_cont, class: "form-control", placeholder: 'Search' %>
+         <%= button_tag type: "submit", class: "btn btn-primary" do %>
+            <i class="fas fa-search"></i>
+         <% end %>
+      </div>
+   <% end %>
+<% else %>
+   <%= search_form_for @q, url: search_path do |f| %>
+      <div class="form-inline">
+         <%= f.search_field :name_cont, class: "form-control", placeholder: 'Search' %>
+         <%= button_tag type: "submit", class: "btn btn-primary" do %>
+            <i class="fas fa-search"></i>
+         <% end %>
+      </div>
+   <% end %>
 <% end %>
