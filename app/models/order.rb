@@ -1,11 +1,14 @@
 class Order < ApplicationRecord
   has_many :order_details, dependent: :destroy
   has_many :items, through: :order_details
-  
-  def bill
-    n = 0
-    n = order.total_payment + order.shipping_fee
-    n.to_s(:delimited)
+
+  def which_pay
+    case self.payment_method
+    when 0 then
+      "クレジットカード"
+    when 1 then
+      "銀行振込"
+    end 
   end 
   
   def my_status
