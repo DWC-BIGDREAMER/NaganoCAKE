@@ -15,9 +15,9 @@
       <tbody>
         <% @orders.each do |od| %>
           <tr>
-            <td><%= od.creatd_at %></td>
+            <td><%= od.created_at.strftime('%Y/%m/%d') %></td>
             <td>
-              <%= od.postcode %><br>
+              〒<%= od.postcode %><br>
               <%= od.address %><br>
               <%= od.name %>
             </td>
@@ -27,12 +27,8 @@
               <% end %>
             </td>
             <td>
-              <% od.cart_items.each do |ci| %>
-                <% @total = @total + ci %>
-              <% end %>
-              <%= @total %>
             </td>
-            <td><%= od.status %></td>
+            <td><%= od.my_status %></td>
             <td>
               <button class="btn">
                 <%= link_to '表示する', order_path(od), class:"btn btn-primary" %>

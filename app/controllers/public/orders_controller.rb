@@ -2,7 +2,6 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders
-    @total = 0
   end
 
   def show
@@ -17,6 +16,18 @@ class Public::OrdersController < ApplicationController
   def create
     order = Order.new(params_order)
     if order.save
+      
+      # カート内商品は消すので、情報を注文詳細に移す。
+      current_customer.cart_items.each do |ci|
+        ol = OrderDetail.new
+        ol.order_id = order.id
+        ol.item_id = ci.item_id
+        ol.price = ci.item.taxed_price
+        ol.amount = ci.amount
+        ol.making_status = 0
+        ol.save
+      end 
+    
       redirect_to thanks_orders_path
     else
       render index
