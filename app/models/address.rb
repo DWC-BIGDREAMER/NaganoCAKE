@@ -9,5 +9,9 @@ class Address < ApplicationRecord
     "〒" + postcode
   end
 
-
+  # order.new.htmlのセレクトボックスで送り先を表示するためのメソッド
+  def address_display
+    '〒' + postcode + ' ' + address + ' ' + name
+  end 
+  
 end

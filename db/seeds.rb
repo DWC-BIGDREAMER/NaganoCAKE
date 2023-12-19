@@ -38,10 +38,24 @@
 #                 amount: 2
 #                 )
 
-3.times do |n|
-  CartItem.create!(
-    item_id: n + 1,
-    customer_id: 1,
-    amount: 1
-    )
-  end
+# 3.times do |n|
+#   CartItem.create!(
+#     item_id: n + 1,
+#     customer_id: 1,
+#     amount: 1
+#     )
+#   end
+
+# Address.create!(
+#   customer_id: 1,
+#   postcode: 1234567,
+#   address: "somewhere",
+#   name: "someone"
+#   )
+
+# Address.create!(
+#   customer_id: 2,
+#   postcode: 7654321,
+#   address: "anywhere",
+#   name: "anyone"
+#   )
