@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   def set_search
     @q = Item.ransack(params[:q])
     @search = @q.result(distinct: true)
+    @result = params[:q]&.values&.reject(&:blank?)
   end
 
 end
