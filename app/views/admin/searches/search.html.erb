@@ -1,0 +1,37 @@
+<div class="container">
+  <div class='row'>
+    <table class="table">
+      <% if @result == [] %>
+        <h3 class="text-center">検索結果がありません。</h3>
+      <% elsif @search.present? %>
+      <% search_word = @p.name_cont %>
+    <h2 class="mb-3">検索結果 "<%= search_word %>"</h2>
+      <thead class="thead-light">
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% @search.each do |f| %>
+          <td><%= f.id %></td>
+          <td><%= link_to f.full_name, admin_customer_path(f.id) %></td>
+          <td><%= f.email %></td>
+          <td>
+            <% if f.is_active? %>
+              <span class="text-success font-weight-bold"><%= f.sale_status %></span>
+            <% else %>
+              <span class="text-secondary font-weight-bold"><%= f.sale_status %></span>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      <% else %>
+        <h3 class="text-center">検索結果がありません。</h3>
+      <% end %>
+    </table>
+  </div>
+</div>
