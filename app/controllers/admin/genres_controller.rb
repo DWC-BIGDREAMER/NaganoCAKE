@@ -1,13 +1,20 @@
 class Admin::GenresController < ApplicationController
+  
   def index
+    @genre = Genre.new
     @genres = Genre.all
   end
 
   def create
-    if genre = Genre.create(genre_params)
-      genres = Genre.all
-      redirect_to admin_genres_path(genres)
+    @genre = Genre.new(genre_params)
+    if @ganre.save
+      if request.referer == new_admin_item_url
+        redirect_to request.referer
+      else
+        redirect_to admin_genres_path
+      end
     else
+      @genres = Genre.all
       render :index
     end
   end
