@@ -6,7 +6,8 @@ class Admin::OrdersController < ApplicationController
   end 
   
   def index
-    
+    @customer = Customer.find(params[:customer_id])
+    @orders = @customer.orders.page(params[:page])
   end 
   
   def update

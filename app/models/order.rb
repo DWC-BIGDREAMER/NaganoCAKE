@@ -2,6 +2,15 @@ class Order < ApplicationRecord
   has_many :order_details, dependent: :destroy
   has_many :items, through: :order_details
   belongs_to :customer
+  
+  validates :customer_id,    presence: true
+  validates :name,           presence: true
+  validates :postcode,       presence: true
+  validates :address,        presence: true
+  validates :shipping_fee,   presence: true
+  validates :total_payment,  presence: true
+  validates :payment_method, presence: true
+  validates :status,         presence: true
 
   def which_pay
     case self.payment_method
