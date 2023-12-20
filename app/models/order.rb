@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   has_many :order_details, dependent: :destroy
   has_many :items, through: :order_details
+  belongs_to :customer
 
   def which_pay
     case self.payment_method
