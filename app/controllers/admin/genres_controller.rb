@@ -1,5 +1,5 @@
 class Admin::GenresController < ApplicationController
-  
+
   def index
     @genre = Genre.new
     @genres = Genre.all
@@ -7,7 +7,7 @@ class Admin::GenresController < ApplicationController
 
   def create
     @genre = Genre.new(genre_params)
-    if @ganre.save
+    if @genre.save
       if request.referer == new_admin_item_url
         redirect_to request.referer
       else
