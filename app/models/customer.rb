@@ -20,7 +20,7 @@ class Customer < ApplicationRecord
 
   #
   def full_name
-    family_name + '' + first_name
+    family_name + ' ' + first_name
   end
 
   #カナ

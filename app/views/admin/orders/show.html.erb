@@ -13,7 +13,9 @@
         <thead>
           <tr>
             <th><strong>購入者</strong></th>
-            <td>　<%= @od.customer.full_name %></td>
+            <td>
+              　<%= link_to @od.customer.full_name, admin_orders_path(:customer_id => @od.customer.id), class:"edit-link" %>
+          　</td>
           </tr>
 
           <tr>
@@ -31,7 +33,9 @@
 
           <tr>
             <th><strong>支払方法</strong></th>
+
             <td>　<%= I18n.t("enums.order.payment_method.#{@od.payment_method}") %></td>
+
           </tr>
 
           <tr>

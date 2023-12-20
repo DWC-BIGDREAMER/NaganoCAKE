@@ -30,9 +30,11 @@ class Public::OrdersController < ApplicationController
 
       redirect_to thanks_orders_path
     else
-      render index
-    end
-  end
+      @orders = current_customer.orders
+      render :index
+      
+    end 
+  end 
 
   def confirm
     @cc = current_customer
