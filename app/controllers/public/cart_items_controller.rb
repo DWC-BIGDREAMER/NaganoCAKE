@@ -1,7 +1,6 @@
 class Public::CartItemsController < ApplicationController
   
   def index
-    # @cart_items = CartItem.where(customer_id: current_customer.id)
     @cart_items = current_customer.cart_items
     @total = 0
   end 
