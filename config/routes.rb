@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   #searches
   get "search" => "searches#search"
+  get "/genre/search" => "searches#genre_search"
 
   #items
   resources :items, only: [:index, :show]
