@@ -1,11 +1,11 @@
 <div class="container">
-  
+
   <div class="row">
     <div class="offset-1 col-auto">
       <h3>注文情報確認</h3>
     </div>
   </div>
-  
+
   <!--テーブル-->
   <div class="row">
     <!--商品テーブル-->
@@ -51,7 +51,7 @@
       </table>
     </div>
   </div>
-  
+
   <!--支払方法及びお届け先-->
   <div class="row">
     <!--1行目-->
@@ -73,7 +73,7 @@
       </p>
     </div>
   </div>
-  
+
   <!--確定ボタン-->
   <div class="row justify-content-center">
     <div class="col-auto">
@@ -85,7 +85,7 @@
         <%= f.hidden_field :shipping_fee, :value => 800 %>
         <%= f.hidden_field :total_payment, :value => @total_payment %>
         <%= f.hidden_field :payment_method, :value => @order.payment_method %>
-        <%= f.hidden_field :status, :value => 0 %>
+        <%= f.hidden_field :status, :value => :waiting %>
         <%= f.submit '注文を確定する', class:"btn btn-success" %>
       <% end %>
     </div>
