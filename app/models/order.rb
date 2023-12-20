@@ -25,4 +25,15 @@ class Order < ApplicationRecord
       "発送済み"
     end
   end 
+  
+  #注文時間（年/月/日）
+  def y_to_d
+    self.created_at.strftime('%Y/%m/%d')
+  end
+  
+  # 注文時間（年/月/日 時間:分:秒）
+  def y_to_s
+    self.created_at.strftime('%Y/%m/%d %H:%M:%S')
+  end 
+  
 end
