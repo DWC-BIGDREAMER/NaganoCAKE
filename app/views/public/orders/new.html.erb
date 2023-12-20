@@ -12,11 +12,11 @@
       <div class="col form-group">
         <p><strong>支払方法</strong></p>
         <!--クレカ-->
-        　<%= f.radio_button :payment_method, 0, checked: true %>
-        　<%= f.label :payment_method_0, "クレジットカード" %><br>
+        　<%= f.radio_button :payment_method, :credit_card, checked: true %>
+        　<%= f.label :payment_method_credit_card, "クレジットカード" %><br>
         <!--銀行-->
-        　<%= f.radio_button :payment_method, 1 %>
-        　<%= f.label :payment_method_1, "銀行振込" %>
+        　<%= f.radio_button :payment_method, :bank_transfer %>
+        　<%= f.label :payment_method_bank_transfer, "銀行振込" %>
       </div>
     </div>
     
