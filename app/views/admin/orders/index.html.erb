@@ -2,7 +2,7 @@
   
   <div class="row">
     <div class="col-auto">
-      <h3>注文履歴一覧</h3>
+      <h3></h3>
     </div>
   </div>
   
@@ -11,7 +11,7 @@
       <table class="table">
         <thead class="thead-light">
           <tr>
-            <th class="edit-link">購入日時</th>
+            <th>購入日時</th>
             <th>購入者</th>
             <th>注文個数</th>
             <th>注文ステータス</th>
@@ -20,12 +20,11 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-              <td class="edit-link">
-                <%= link_to admin_order_path(order), class:" edit-link" do %>
+              <td>
+                <%= link_to admin_order_path(order), class:"edit-link" do %>
                   <%= order.y_to_s %>
                 <% end %>
               </td>
-              <td><%= order.name %></td>
               <td><%= order.order_details.sum(&:amount) %></td>
               <td><%= order.my_status %></td>
             </tr>
