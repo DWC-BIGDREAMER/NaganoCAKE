@@ -11,9 +11,12 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <div class="footerFixed">
+      <%= render 'layouts/header' %>
+      
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
     
-    <%= yield %>
-    <%= render 'layouts/footer' %>
   </body>
 </html>
