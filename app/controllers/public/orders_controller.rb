@@ -16,7 +16,7 @@ class Public::OrdersController < ApplicationController
   def create
     order = Order.new(params_order)
     if order.save
-      
+
       # カート内商品は消すので、情報を注文詳細に移す。
       current_customer.cart_items.each do |ci|
         ol = OrderDetail.new
@@ -24,10 +24,10 @@ class Public::OrdersController < ApplicationController
         ol.item_id = ci.item_id
         ol.price = ci.item.taxed_price
         ol.amount = ci.amount
-        ol.making_status = 0
+        ol.making_status = :impossible
         ol.save
-      end 
-    
+      end
+
       redirect_to thanks_orders_path
     else
       @orders = current_customer.orders
@@ -43,13 +43,13 @@ class Public::OrdersController < ApplicationController
     which_address = params[:order][:which_address]
     # 登録済み住所が選ばれた場合、そのidからデータを取得
     chosen_address = Address.find(params[:order][:address_id])
-    
+
     @order = Order.new(params_order)
     @order.customer_id = @cc.id
     @order.shipping_fee = 800
     @order.status = 0
     @order.total_payment = @cc.cart_items.sum(&:sum)
-    
+
     case which_address.to_i
     # 自身の住所
     when 0 then
@@ -63,17 +63,17 @@ class Public::OrdersController < ApplicationController
       @order.address = chosen_address.address
     end
     # 新しい住所を選んだ場合、name, postcode, addressは送られてくるので何か処理する必要なし。
-    
+
     @total_sum = @cart_items.sum(&:sum)
     @total_payment = @total_sum + 800
-    
+
   end
 
   def thanks
   end
-  
+
   private
-  
+
   def params_order
     params.require(:order).permit(:customer_id,
                                     :name,
@@ -82,7 +82,7 @@ class Public::OrdersController < ApplicationController
                                     :shipping_fee,
                                     :total_payment,
                                     :payment_method,
-                                    :status
+                                    :status,
                                     )
   end
 
