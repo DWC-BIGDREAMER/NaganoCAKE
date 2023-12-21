@@ -47,7 +47,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(params_order)
     @order.customer_id = @cc.id
     @order.shipping_fee = 800
-    @order.status = 0
+    @order.status = :waiting
     @order.total_payment = @cc.cart_items.sum(&:sum)
 
     case which_address.to_i
