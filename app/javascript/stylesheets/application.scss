@@ -25,10 +25,6 @@
 footer{
     position: absolute;/* ←絶対位置 */
     bottom: 0;
-    min-width: 100vw;
-    
-    /* 以下 背景色やテキストカラーなどはお好みで指定してください */
-   //  background: #1d1b3f;
-   //  color: #fff;
+    min-width: 100%;
     text-align: center;
 }
