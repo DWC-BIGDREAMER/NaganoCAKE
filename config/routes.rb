@@ -61,7 +61,7 @@ Rails.application.routes.draw do
     #searches
     get "search" => "searches#search"
     resources :customers,     only: [:index, :show, :edit, :update]
-    resources :genres,        only: [:index, :create, :edit, :update]
+    resources :genres,        only: [:index, :create, :edit, :update, :destroy]
     resources :items,         only: [:index, :show, :create, :edit, :update, :new]
     resources :orders,        only: [:index, :show, :update]
     resources :order_details, only: [:update]
