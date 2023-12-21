@@ -2,12 +2,16 @@
 
 // フォント
 // 使いたいフォントがあれば@importを追加する。
-@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Hachi+Maru+Pop&family=Kosugi+Maru&family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@700&family=Dela+Gothic+One&family=Hachi+Maru+Pop&family=Kosugi+Maru&family=Lora&display=swap');
 // セレクタ名を適当につけて、font-familyをコピペし、フォントを使いたいhtmlのクラスに該当のフォントのクラスを足すと使える。
-.font-bold{font-family: 'Dela Gothic One', sans-serif;}
+.font-strong{font-family: 'Dela Gothic One', sans-serif;}
 .font-formal{font-family: 'Lora', serif;}
 .font-pop{font-family: 'Hachi Maru Pop', cursive;}
 .font-kosugi{font-family: 'Kosugi Maru', sans-serif;}
+.font-gothic{font-family: 'BIZ UDPGothic', sans-serif;}
+.font-bold{
+  font-weight: 700;
+}
 
 .edit-link{
    color: black;
@@ -27,4 +31,80 @@ footer{
     bottom: 0;
     min-width: 100%;
     text-align: center;
+}
+
+.btn-primary{
+  background-color: #0e357f !important;
+  border-color: #0e357f !important;
+}
+
+.btn-success{
+  background-color: #4a7f0e !important;
+  border-color: #0e7f1f !important;
+}
+
+.text-primary{
+  color: #0e357f !important;
+}
+
+.bg-primary{
+  background-color: #0e357f !important;
+}
+
+.openbtn{
+	/*ボタン内側の基点となるためrelativeを指定。
+追従するナビゲーションの場合はfixed＋top、rightといった位置をセットで指定*/
+	position: relative;
+// 	background:#57a2c7;
+	cursor: pointer;
+    width: 50px;
+    height: 50px;
+// 	border-radius: 5px;
+}
+
+/*ボタン内側*/
+.openbtn span{
+    display: inline-block;
+    transition: all .3s;/*アニメーションの設定*/
+    position: absolute;
+    left: 14px;
+    // border-radius: 2px;
+	background: #fff;
+  	width: 45%;
+  }
+
+.openbtn span:nth-of-type(1) {
+	top:15px;	
+  height: 2px;
+}
+
+.openbtn span:nth-of-type(2) {
+	top:23px;
+  height: 1px;
+}
+
+.openbtn span:nth-of-type(3) {
+	top:31px;
+  height: 1px;
+}
+
+/*activeクラスが付与されると線が回転して×に*/
+
+.openbtn.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+}
+
+.openbtn.active span:nth-of-type(2) {
+	opacity: 0;/*真ん中の線は透過*/
+}
+
+.openbtn.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+    height: 2px;
 }
