@@ -4,67 +4,69 @@
       <a class="navbar-brand" href="/">
         <%= image_tag src="logo_transparent_resize", size: '100x80' %>
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <button class="navbar-toggler openbtn" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <!--<span class="navbar-toggler-icon"></span>-->
+        <span></span><span></span><span></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav mr-auto font-formal">
+        <ul class="navbar-nav mr-auto font-formal gnavi">
           <% if admin_signed_in? %>
             <li>
-              <%= link_to destroy_admin_session_path, class: 'text-warning', method: :delete do %>
+              <%= link_to destroy_admin_session_path, class: 'text-warning a', method: :delete do %>
                 管理者
               <% end %>
             </li>
           <% else %>
             <li>
-              <%= link_to admin_session_path, class: 'text-warning' do %>
+              <%= link_to admin_session_path, class: 'text-warning ' do %>
                 管理者
               <% end %>
             </li>
           <% end %>
             <li>
-            <%= link_to admin_items_path,class: 'nav-link text-light' do %>
+            <%= link_to admin_items_path,class: 'nav-link text-light a' do %>
               </i> 商品一覧
             <% end %>
           </li>
           <li>
-            <%=  link_to admin_customers_path,class: 'nav-link text-light' do %>
+            <%=  link_to admin_customers_path,class: 'nav-link text-light a' do %>
               <i class="fas fa-users"></i> 会員一覧
             <% end %>
           </li>
           <li>
-            <%= link_to admin_root_path, class: 'nav-link text-light' do %>
+            <%= link_to admin_root_path, class: 'nav-link text-light a' do %>
               </i> 注文履歴一覧
             <% end %>
           </li>
           <li>
-            <%=  link_to admin_genres_path ,class: 'nav-link text-light' do %>
+            <%=  link_to admin_genres_path ,class: 'nav-link text-light a' do %>
               </i> ジャンル一覧
             <% end %>
           </li>
         </ul>
-        <ul class="navbar-nav mr-auto">
+        <!--ul-2を適用すれば、画面幅991px以下において、下線の長さが文字と同じくらいになる。-->
+        <ul class="navbar-nav gnavi ul-" style="margin: 0 auto">
           <li class='text-warning'>客</li>
 
           <% if customer_signed_in? %>
             <!--サインイン後-->
             <li>
-              <%= link_to customers_my_page_path(current_customer), class: 'nav-link text-light' do %>
-                </i> マイページ
+              <%= link_to customers_my_page_path(current_customer), class: 'nav-link text-light a' do %>
+                マイページ
               <% end %>
             </li>
             <li>
-              <%= link_to items_path,class: 'nav-link text-light' do %>
-                </i> 商品一覧
+              <%= link_to items_path,class: 'nav-link text-light a' do %>
+                商品一覧
               <% end %>
             </li>
             <li>
-              <%= link_to cart_items_path, class: 'nav-link text-light' do %>
+              <%= link_to cart_items_path, class: 'nav-link text-light a' do %>
                 カート
               <% end %>
             </li>
             <li>
-              <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
+              <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light a' do %>
                 <i class="fas fa-sign-out-alt"></i> Log out
               <% end %>
             </li>
@@ -94,7 +96,7 @@
       </div>
     </div>
 
-    <div class="mx-auto">
+    <div class="mx-auto mt-3">
       <%= render "layouts/search", q: @q %>
     </div>
 
