@@ -5,7 +5,9 @@
   </div>
   <div class="col-auto ml-auto">
     <button class="btn">
-      <%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, remote: false, class:"btn btn-danger" %>
+      <% if cart_items.size != 0 %>
+        <%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, remote: false, class:"btn btn-danger" %>
+      <% end %>
     </button>
   </div>
 </div>

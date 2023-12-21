@@ -25,6 +25,7 @@ class Public::CartItemsController < ApplicationController
     end
     # @cart_items = current_customer.cart_items
     redirect_to cart_items_path
+    # render :index
   end
 
   def create
