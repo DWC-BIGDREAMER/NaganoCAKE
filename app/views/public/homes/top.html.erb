@@ -2,24 +2,35 @@
   <div class="row">
 
     <!-- sidebar ジャンル検索が入る -->
-    <div class="col-xl-3">
+    <div class="col-md-2 mx-auto">
+      <%= render 'public/homes/sidebar', genres: @genres %>
     </div>
 
     <!-- textbox -->
-    <div class="col-xl-9">
-      <p>
-        ようこそ、ながのCAKEへ！<br>
-        このサイトは、ケーキ販売のECサイトになります。<br>
-        会員でない方も商品の閲覧はできますが、<br>
-        購入には会員登録が必要になります。
-      </p>
-
+    <div class="col-md-10">
+      <div style="position: relative;">
+        <p class="center-block", style="background-image: url('<%= asset_path('strawberry-cake-3975569_640.jpg') %>');
+                                        background-repeat: no-repeat;
+                                        background-size: cover;
+                                        background-position: center;
+                                        padding: 100px;">
+          <span style="position: relative; z-index: 1; display: block;">
+            ようこそ、ながのCAKEへ！<br>
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            会員でない方も商品の閲覧はできますが、<br>
+            購入には会員登録が必要になります。
+          </span>
+          <span style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.6); z-index: 0;"></span>
+        </p>
+      </div>
     <!-- items -->
       <section class="my-3">
         <h1>新着商品</h1>
-        
+
       <!-- 新着商品リストが入る  -->
-        <div></div>
+        <div>
+          <%= render 'public/items/index', items: @items %>
+        </div>
 
         <div class="text-right mr-5">
           <%= link_to items_path do %>
