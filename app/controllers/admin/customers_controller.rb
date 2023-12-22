@@ -18,7 +18,7 @@ class Admin::CustomersController < ApplicationController
       redirect_to admin_customer_path(@customer)
     else
       render :edit
-    end 
+    end
   end
 
 private

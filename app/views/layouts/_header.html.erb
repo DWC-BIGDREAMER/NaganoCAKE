@@ -13,12 +13,12 @@
         </ul>
         <!--ul-2を適用すれば、画面幅991px以下において、下線の長さが文字と同じくらいになる。-->
         <ul class="navbar-nav gnavi ul- font-formal" style="">
-          
+
           <% if admin_signed_in? %>
           <!--管理者ログイン後-->
             <li>
               <%= link_to admin_items_path,class: 'nav-link text-light a' do %>
-                </i> 商品一覧
+                <i class="fa-solid fa-cake-candles"></i> 商品一覧
               <% end %>
             </li>
             <li>
@@ -28,34 +28,34 @@
             </li>
             <li>
               <%= link_to admin_root_path, class: 'nav-link text-light a' do %>
-                </i> 注文履歴一覧
+                <i class="fa-solid fa-clock-rotate-left"></i> 注文履歴一覧
               <% end %>
             </li>
             <li>
               <%=  link_to admin_genres_path ,class: 'nav-link text-light a' do %>
-                </i> ジャンル一覧
+                <i class="fa-solid fa-image"></i> ジャンル一覧
               <% end %>
             </li>
             <li>
               <%= link_to destroy_admin_session_path, class: 'nav-link text-light a', method: :delete do %>
-                ログアウト
+               <i class="fa-solid fa-right-from-bracket"></i> ログアウト
               <% end %>
             </li>
           <% elsif customer_signed_in? %>
           <!--サインイン後-->
             <li>
               <%= link_to customers_my_page_path(current_customer), class: 'nav-link text-light a' do %>
-                マイページ
+                <i class="fa-solid fa-user"></i> マイページ
               <% end %>
             </li>
             <li>
               <%= link_to items_path,class: 'nav-link text-light a' do %>
-                商品一覧
+                <i class="fa-solid fa-cake-candles"></i> 商品一覧
               <% end %>
             </li>
             <li>
               <%= link_to cart_items_path, class: 'nav-link text-light a' do %>
-                カート
+               <i class="fa-solid fa-cart-shopping"></i> カート
               <% end %>
             </li>
             <li>
@@ -72,7 +72,7 @@
             </li>
             <li>
               <%= link_to items_path,class: 'nav-link text-light a' do %>
-                商品一覧
+                <i class="fa-solid fa-cake-candles"></i> 商品一覧
               <% end %>
             </li>
             <li>
