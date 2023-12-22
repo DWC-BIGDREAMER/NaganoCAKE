@@ -37,9 +37,9 @@ class Public::OrdersController < ApplicationController
     else
       @orders = current_customer.orders
       render :index
-      
-    end 
-  end 
+
+    end
+  end
 
   def confirm
     @cc = current_customer
@@ -47,7 +47,9 @@ class Public::OrdersController < ApplicationController
     # 自身の住所/登録済み住所/新しい住所のどれが選ばれたかを確認。
     which_address = params[:order][:which_address]
     # 登録済み住所が選ばれた場合、そのidからデータを取得
-    chosen_address = Address.find(params[:order][:address_id])
+    if which_address == "1" && params[:order][:address_id].present?
+      chosen_address = Address.find(params[:order][:address_id])
+    end
 
     @order = Order.new(params_order)
     @order.customer_id = @cc.id
@@ -66,12 +68,15 @@ class Public::OrdersController < ApplicationController
       @order.name = chosen_address.name
       @order.postcode = chosen_address.postcode
       @order.address = chosen_address.address
+    else
+      # 住所が選択されていない場合の処理
+      flash[:alert] = "登録された住所が見つかりませんでした。"
+      redirect_to new_order_path
+      return
     end
     # 新しい住所を選んだ場合、name, postcode, addressは送られてくるので何か処理する必要なし。
-
     @total_sum = @cart_items.sum(&:sum)
     @total_payment = @total_sum + 800
-
   end
 
   def thanks
@@ -90,5 +95,4 @@ class Public::OrdersController < ApplicationController
                                     :status,
                                     )
   end
-
 end
