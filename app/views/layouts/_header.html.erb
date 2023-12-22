@@ -5,13 +5,13 @@
         <%= image_tag src="sato.cake/logo_transparent_orange_cccp10", size: '100x80' %>
       </a>
       <% if customer_signed_in? %>
-        <p class="text-light" style="position: absolute; right: 33%; top: 30px">ようこそ、<%= current_customer.full_name %>さん！</p>
+        <p class="text-light" style="position: absolute; left: 40%; top: 30px">ようこそ、<%= current_customer.full_name %>さん！</p>
       <% end %>
       <button class="navbar-toggler openbtn" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <!--<span class="navbar-toggler-icon"></span>-->
         <span></span><span></span><span></span>
       </button>
-      
+
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto font-formal gnavi">
         </ul>
