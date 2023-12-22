@@ -1,78 +1,21 @@
-<!--タイトル-->
-<div class="row">
-  <div class="col-6">
-    <h4><strong>ショッピングカート</strong></h4>
-  </div>
-  <div class="col-auto ml-auto">
-    <button class="btn">
-      <% if cart_items.size != 0 %>
-        <%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, remote: false, class:"btn btn-danger" %>
+<!--カート内商品詳細-->
+<% cart_items.each do |ci| %>
+  <tr>
+    <td>
+      <%= image_tag ci.item.image, size:"70x70" %>
+      <%= ci.item.name %>
+    </td>
+    <td><%= ci.item.taxed_price.to_s(:delimited) %></td>
+    <!--個数の選択。非同期通信にするのもいいかも-->
+    <td>
+      <%= form_with model:ci, url: cart_item_path(ci), method: :patch, local: false do |f|  %>
+        <%= f.select :amount, *[1..ci.variable], {}, class:"form-control mt1", style:"width: %" %>
+        <%= f.submit '変更', class:"btn btn-success mt-1" %>
       <% end %>
-    </button>
-  </div>
-</div>
-
-<div class="row mt-3">
-  <div class="col">
-    <table class="table table-bordered border-primary">
-      <thead class="bg-primary text-white">
-        
-        <!--表タイトル-->
-        <tr>
-          <th style="width: 40%;">商品名</th>
-          <th style="width: 15%;">単価(税込)</th>
-          <th style="width: 15%;">数量</th>
-          <th style="width: 15%;">小計</th>
-          <th style="width: 15%;"></th>
-        </tr>
-      </thead>
-      
-      <!--カート内商品詳細-->
-      <tbody class="font-bold">
-        <% cart_items.each do |ci| %>
-          <tr>
-            <td>
-              <%= image_tag ci.item.image, size:"70x70" %>
-              <%= ci.item.name %>
-            </td>
-            <td><%= ci.item.taxed_price.to_s(:delimited) %></td>
-            <!--個数の選択。非同期通信にするのもいいかも-->
-            <td>
-              <%= form_with model:ci, url: cart_item_path(ci), method: :patch, local: false do |f|  %>
-                <%= f.select :amount, *[1..ci.variable], {}, class:"form-control mt1", style:"width: %" %>
-                <%= f.submit '変更', class:"btn btn-success mt-1" %>
-              <% end %>
-            </td>
-            <td><%= ci.sum.to_s(:delimited) %></td>
-            <td>
-              <%= link_to '削除する', cart_item_path(ci), method: :delete, remote: true, class:"btn btn-danger btn-block" %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-
-<!--買い物を続けるボタン及び合計金額-->
-<div class="row font-bold">
-  
-  <!--買い物を続けるボタンを押すとトップページに飛ぶ謎仕様。普通商品一覧だろ。-->
-    <div class="col-auto">
-      <button class="btn">
-        <%= link_to '買い物を続ける', root_path, class:"btn btn-primary" %>
-      </button>
-    </div>
-    
-    <div class="col-lg-2 col-md-3 col-sm-3 ml-auto align-self-center border border-dark bg-light">
-      <span>合計金額</span>
-    </div>
-    
-    <div class="col-lg-2 col-md-3 col-sm-3 mr-3 align-self-center border border-dark">
-      <span>
-        <%= cart_items.sum(&:sum).to_s(:delimited) %>
-      </span>
-    </div>
-  
-</div>
+    </td>
+    <td><%= ci.sum.to_s(:delimited) %></td>
+    <td>
+      <%= link_to '削除する', cart_item_path(ci), method: :delete, remote: true, class:"btn btn-danger btn-block" %>
+    </td>
+  </tr>
+  <% end %>
