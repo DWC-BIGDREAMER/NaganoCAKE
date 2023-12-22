@@ -41,7 +41,7 @@
           <tr>
             <th><strong>注文ステータス</strong></th>
             <td>
-              <%= form_with model: @od, url: admin_order_path, method: :patch do |f| %>
+              <%= form_with model: @od, url: admin_order_path, method: :patch, local: true do |f| %>
                 　<%= f.select :status, Order.statuses.keys.map { |status| [I18n.t("enums.order.status.#{status}"), status] } %>
                 <%= f.submit "更新",class:"ml-4 btn btn-success" %>
               <% end %>
@@ -73,7 +73,7 @@
               <td><%= ol.item.taxed_price.to_s(:delimited) %></td>
               <td><%= ol.amount %></td>
               <td><%= ol.sum.to_s(:delimited) %></td>
-              <%= form_with model: ol, url: admin_order_detail_path, method: :patch do |f| %>
+              <%= form_with model: ol, url: admin_order_detail_path, method: :patch, local: true do |f| %>
                 <td>
                   <%= f.select :making_status, OrderDetail.making_statuses.keys.map { |status| [I18n.t("enums.order_details.making_status.#{status}"), status] } %>
                   <%= f.hidden_field :order_detail_id, :value => ol.id %>

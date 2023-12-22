@@ -41,5 +41,10 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (is_active == true)
   end
-
+  
+  # これがないと管理者ログインできないってransackに言われた
+  def self.ransackable_attributes(auth_object = nil)
+    ["address", "created_at", "email", "encrypted_password", "family_name", "family_name_kana", "first_name", "first_name_kana", "id", "is_active", "postcode", "remember_created_at", "reset_password_sent_at", "reset_password_token", "telephone_number", "updated_at"]
+  end
+  
 end

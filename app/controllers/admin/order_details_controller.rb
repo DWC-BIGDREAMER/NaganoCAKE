@@ -6,11 +6,11 @@ class Admin::OrderDetailsController < ApplicationController
     # byebug
     if od.order_details.all? {|order_detail| order_detail.making_status == "making_completed"}
       od.update(status: :preparing)
-      redirect_to admin_order_path(ol.order)
-      @od = Order.find(params[:id])
-      @ols = @od.order_details
-    end 
-    
+    end
+  
+    redirect_to admin_order_path(ol.order)
+    @od = Order.find(params[:id])
+    @ols = @od.order_details
   end 
   
   private
