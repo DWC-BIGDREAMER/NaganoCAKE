@@ -62,7 +62,7 @@
     <!--2行目-->
     <div class="col-auto">
       <p>
-        <% if @order.payment_method == 0 %>
+        <% if @order.payment_method == "credit_card" %>
           クレジットカード
         <% else %>
           銀行振込
