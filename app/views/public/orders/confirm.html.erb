@@ -61,13 +61,7 @@
     </div>
     <!--2行目-->
     <div class="col-auto">
-      <p>
-        <% if @order.payment_method == 0 %>
-          クレジットカード
-        <% else %>
-          銀行振込
-        <% end %>
-      </p>
+      <p><%= I18n.t("enums.order.payment_method.#{@order.payment_method}") %></p>
       <p>〒<%= @order.postcode %> <%= @order.address %><br>
         <%= @order.name %>
       </p>

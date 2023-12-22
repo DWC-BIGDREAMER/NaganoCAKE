@@ -5,8 +5,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
-    @ols = @order.order_details
+    # 確認画面でリロードした際に、@orderが空のため発生するエラーの解消無理やり。余裕があれば見直す。
+    if params[:id] == "confirm"
+      redirect_to new_order_path
+    else
+      @order = Order.find(params[:id])
+      @ols = @order.order_details
+    end
   end
 
   def new
