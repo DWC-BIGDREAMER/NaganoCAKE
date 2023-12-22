@@ -12,7 +12,14 @@ class Admin::OrdersController < ApplicationController
   
   def update
     @order = Order.find(params[:id])
+    new_status = params[:order][:status]
+    
     @order.update(params_order)
+    if new_status == "paid_up"
+      @order.order_details.each do |ol|
+        ol.update(making_status: :waiting)
+      end
+    end
     redirect_to admin_order_path(@order)
   end 
   
