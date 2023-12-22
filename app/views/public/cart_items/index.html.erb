@@ -1,16 +1,62 @@
 <div class="container">
-  
-  
-  <div id="table">
-    <%= render "table", cart_items: @cart_items %>
+  <!--タイトル-->
+  <div class="row">
+    <div class="col-6">
+      <h4><strong>ショッピングカート</strong></h4>
+    </div>
+    <div class="col-auto ml-auto" id="empty">
+      <%= render 'empty_cart', disabled: @cart_items.empty? %>
+    </div>
   </div>
   
-  <!--情報入力に進むボタン-->
-  <div class="row mt-3 justify-content-center">
+ 
+  
+  <div class="row mt-3">
+    <div class="col">
+      <table class="table table-bordered border-primary">
+        <thead class="bg-primary text-white">
+          
+          <!--表タイトル-->
+          <tr>
+            <th style="width: 40%;">商品名</th>
+            <th style="width: 15%;">単価(税込)</th>
+            <th style="width: 15%;">数量</th>
+            <th style="width: 15%;">小計</th>
+            <th style="width: 15%;"></th>
+          </tr>
+        </thead>
+          <tbody class="font-bold" id="table">
+            <%= render "table", cart_items: @cart_items %>
+          </tbody>
+      </table>
+    </div>
+  </div>
+  
+  
+  <!--買い物を続けるボタン及び合計金額-->
+  <div class="row font-bold">
+    <!--買い物を続けるボタンを押すとトップページに飛ぶ謎仕様。普通商品一覧だろ。-->
     <div class="col-auto">
       <button class="btn">
-        <%= link_to '情報入力に進む', new_order_path, class:"btn btn-success" %>
+        <%= link_to '買い物を続ける', root_path, class:"btn btn-primary" %>
       </button>
+    </div>
+    
+    <div class="col-lg-2 col-md-3 col-sm-3 ml-auto align-self-center border border-dark bg-light">
+      <span>合計金額</span>
+    </div>
+    
+    <div class="col-lg-2 col-md-3 col-sm-3 mr-3 align-self-center border border-dark">
+      <span id="sum">
+        <%= render 'sum', cart_items: @cart_items %>
+      </span>
+    </div>
+  </div>
+
+  <!--情報入力に進むボタン-->
+  <div class="row mt-3 justify-content-center">
+    <div class="col-auto" id="proceed">
+      <%= render 'proceed', disabled: @cart_items.empty? %>
     </div>
   </div>
   

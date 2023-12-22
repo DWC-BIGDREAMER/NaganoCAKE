@@ -8,24 +8,20 @@ class Public::CartItemsController < ApplicationController
     cart_item = CartItem.find(params[:id])
     cart_item.update(cart_item_params)
     @cart_items = current_customer.cart_items
-    # redirect_to cart_items_path
+    render :cart_item
   end
 
   def destroy
     cart_item = CartItem.find(params[:id])
     cart_item.destroy
     @cart_items = current_customer.cart_items
-    # redirect_to cart_items_path
+    render :cart_item
   end
 
   def destroy_all
-    cart_items = current_customer.cart_items
-    cart_items.each do |ci|
-      ci.destroy
-    end
-    # @cart_items = current_customer.cart_items
-    redirect_to cart_items_path
-    # render :index
+    @cart_items = current_customer.cart_items
+    @cart_items.destroy_all
+    render :cart_item
   end
 
   def create
