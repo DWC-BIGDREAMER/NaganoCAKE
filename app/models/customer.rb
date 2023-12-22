@@ -47,4 +47,9 @@ class Customer < ApplicationRecord
     ["address", "created_at", "email", "encrypted_password", "family_name", "family_name_kana", "first_name", "first_name_kana", "id", "is_active", "postcode", "remember_created_at", "reset_password_sent_at", "reset_password_token", "telephone_number", "updated_at"]
   end
 
+    #ransackに略
+  def self.ransackable_associations(auth_object = nil)
+    ["addresses", "cart_items", "orders"]
+  end
+
 end
