@@ -3,7 +3,7 @@ class Public::ItemsController < ApplicationController
 
   def index
     @items = Item.page(params[:page]).per(8).order('created_at DESC')
-    @items_count = Item.count
+    @total_items_count = @items.total_count
   end
 
   def show
