@@ -2,7 +2,8 @@ class Admin::OrdersController < ApplicationController
   def show
     @od = Order.find(params[:id])
     @ols = @od.order_details
-    
+    @total = @ols.sum(&:sum)
+    @bill = @total + @od.shipping_fee
   end 
   
   def index
