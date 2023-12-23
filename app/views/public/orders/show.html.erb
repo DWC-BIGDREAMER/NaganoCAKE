@@ -23,11 +23,11 @@
           </tr>
           <tr>
             <th>支払方法</th>
-            <td><%= @order.which_pay %></td>
+            <td><%= I18n.t("enums.order.payment_method.#{@order.payment_method}") %></td>
           </tr>
           <tr>
             <th>ステータス</th>
-            <td><%= @order.my_status %></td>
+            <td><%= I18n.t("enums.order.status.#{@order.status}") %></td>
           </tr>
         </thead>
       </table>
