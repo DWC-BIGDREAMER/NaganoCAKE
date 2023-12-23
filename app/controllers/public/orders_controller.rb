@@ -52,7 +52,7 @@ class Public::OrdersController < ApplicationController
       if params[:order][:address_id].present?
         chosen_address = Address.find(params[:order][:address_id])
       else
-        # 住所が選択されていない場合の処理
+        # 登録済み住所がない場合の処理
         flash[:alert] = "登録された住所が見つかりませんでした。"
         redirect_to new_order_path
         return
