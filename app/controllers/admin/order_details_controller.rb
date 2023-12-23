@@ -3,7 +3,11 @@ class Admin::OrderDetailsController < ApplicationController
     ol = OrderDetail.find(params[:order_detail][:order_detail_id])
     od = Order.find(params[:id])
     ol.update(params_order_detail)
-    # byebug
+    
+    if ol.making_status == "making"
+      od.update(status: :making)
+    end
+    
     if od.order_details.all? {|order_detail| order_detail.making_status == "making_completed"}
       od.update(status: :preparing)
     end
