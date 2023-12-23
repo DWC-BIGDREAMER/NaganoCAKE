@@ -17,13 +17,13 @@ class Admin::OrdersController < ApplicationController
 
     @order.update(params_order)
 
-    if new_status == "paid_up" # 注文ステータスが「入金確認」
-      @order.order_details.update_all(making_status: :waiting) # すべての製作ステータスを「製作待ち」に更新
-    elsif @order.order_details.all? { |ol| ol.making_status == "making_completed" } # 全ての製作ステータスが「製作完了」
-      @order.update(status: :preparing) # 注文ステータスを「発送準備中」に更新
-    elsif @order.order_details.any? { |ol| ol.making_status == "making" } # 製作ステータスに「製作中」が含まれている場合
-      @order.update(status: :making) # 注文ステータスを「製作中」に更新
-    end
+  if new_status == "paid_up" # 注文ステータスが「入金確認」
+    @order.order_details.update_all(making_status: :waiting) # すべての製作ステータスを「製作待ち」に更新
+  elsif new_status != "shipping" && @order.order_details.all? { |ol| ol.making_status == "making_completed" } # 全ての製作ステータスが「製作完了」かつ新しい注文ステータスが「発送完了」でない場合
+    @order.update(status: :preparing) # 注文ステータスを「発送準備中」に更新
+  elsif @order.order_details.any? { |ol| ol.making_status == "making" } # 製作ステータスに「製作中」が含まれている場合
+    @order.update(status: :making) # 注文ステータスを「製作中」に更新
+  end
 
     redirect_to admin_order_path(@order)
   end
