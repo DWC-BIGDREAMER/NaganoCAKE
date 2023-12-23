@@ -36,6 +36,7 @@ class Public::OrdersController < ApplicationController
       redirect_to thanks_orders_path
     else
       @orders = current_customer.orders
+      flash.now[:alert] = "注文できませんでした。"
       render :index
 
     end
@@ -47,8 +48,15 @@ class Public::OrdersController < ApplicationController
     # 自身の住所/登録済み住所/新しい住所のどれが選ばれたかを確認。
     which_address = params[:order][:which_address]
     # 登録済み住所が選ばれた場合、そのidからデータを取得
-    if which_address == "1" && params[:order][:address_id].present?
-      chosen_address = Address.find(params[:order][:address_id])
+    if which_address == "1"
+      if params[:order][:address_id].present?
+        chosen_address = Address.find(params[:order][:address_id])
+      else
+        # 登録済み住所がない場合の処理
+        flash[:alert] = "登録された住所が見つかりませんでした。"
+        redirect_to new_order_path
+        return
+      end
     end
 
     @order = Order.new(params_order)
@@ -68,11 +76,14 @@ class Public::OrdersController < ApplicationController
       @order.name = chosen_address.name
       @order.postcode = chosen_address.postcode
       @order.address = chosen_address.address
-    else
-      # 住所が選択されていない場合の処理
-      flash[:alert] = "登録された住所が見つかりませんでした。"
-      redirect_to new_order_path
-      return
+    when 2 then
+      # nameかaddressかpostcodeが空の場合弾く
+      # もっと賢い書き方あるだろうけど分からない。
+      if @order.name == "" || @order.address == "" || @order.postcode == ""
+        flash[:alert] = "未記載の箇所があります。"
+        redirect_to new_order_path
+        return
+      end
     end
     # 新しい住所を選んだ場合、name, postcode, addressは送られてくるので何か処理する必要なし。
     @total_sum = @cart_items.sum(&:sum)
