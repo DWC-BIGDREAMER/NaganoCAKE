@@ -1,13 +1,9 @@
 <div class="container">
-  
   <div class="row">
-    <div class="col-auto">
-      <h4><%= @customer.full_name %>さんの注文履歴</h4>
-    </div>
-  </div>
-  
-  <div class="row justify-content-center">
-    <div class="col-11">
+    <div class="col-lg-12 col-md-10">
+      <div class="d-flex justify-content-top mb-3">
+        <h3 class="bg-light text-center w-fit-content p-2"><%= @customer.full_name %>さんの注文履歴</h3>
+      </div>
       <table class="table">
         <thead class="thead-light">
           <tr>
@@ -25,12 +21,12 @@
                 <% end %>
               </td>
               <td><%= order.order_details.sum(&:amount) %></td>
-              <td><%= order.my_status %></td>
+              <td><%= I18n.t("enums.order.status.#{order.status}") %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
+      <%= paginate @orders %>
     </div>
   </div>
-  <%= paginate @orders %>
 </div>
