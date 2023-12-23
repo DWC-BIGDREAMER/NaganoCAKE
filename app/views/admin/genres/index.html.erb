@@ -1,12 +1,14 @@
 <div class="container">
-  
+
   <!--タイトル-->
   <div class="row">
     <div class="col-7">
-      <h3 class="bg-light">ジャンル一覧・追加</h3>
+      <div class="d-flex justify-content-top">
+        <h3 class="bg-light text-center w-fit-content p-2">ジャンル一覧・追加</h3>
+      </div>
     </div>
   </div>
-  
+
   <!--ジャンル追加-->
   <%= form_with model: Genre.new, url: admin_genres_path do |f| %>
     <div class="row mt-5">
@@ -21,7 +23,7 @@
       </div>
     </div>
   <% end %>
-  
+
   <!--ジャンル一覧-->
   <div class="row mt-5">
     <div class="col-lg-4 col-7">
@@ -47,6 +49,6 @@
       </table>
     </div>
   </div>
-    
-  
+
+
 </div>
