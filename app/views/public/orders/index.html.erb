@@ -29,7 +29,7 @@
                   <%= item.name %><br/>
                 <% end %>
               </td>
-              <td><%= od.total_payment %></td>
+              <td><%= od.total_payment.to_s(:delimited) %></td>
               <td><%= I18n.t("enums.order.status.#{od.status}") %></td>
               <td>
                 <button class="btn">
