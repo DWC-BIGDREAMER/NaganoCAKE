@@ -18,37 +18,11 @@ ja:
         waiting: "製作待ち"
         making: "製作中"
         making_completed: "製作完了"
-        
+
   activerecord:
-    attributes:
-      customers:
-        family_name: "名前（姓）"
-        first_name: "名前（名）"
-        family_name_kana: "名前（姓・カナ）"
-        first_name_kana: "名前（名・カナ）"
-        email: "メールアドレス"
-        encrypted_password: "パスワード"
-        postcode: "郵便番号"
-        address: "住所"
-        telephone_number: "電話番号"
-        
-      addresses:
-        name: "宛名"
-        postcode: "郵便番号"
-        address: "住所"
-      
-      items:
-        name: "商品名"
-        introducution: "商品説明文"
-        price: "税抜価格"
-        
-      genres:
-        name: "ジャンル名"
-        
     errors:
       messages:
-        invalid: "%{attribute}が正しくありません。"
-        blank: "%{attribute}を入力してください。"
-        too_short: "%{attribute}は%{count}文字以上で入力してください。"
-
-
+        invalid: "が正しくありません。"
+        blank: "を入力してください。"
+        too_short: "は%{count}文字以上で入力してください。"
+        not_saved: "保存できませんでした。"
