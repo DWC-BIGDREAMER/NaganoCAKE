@@ -6,12 +6,11 @@ class ApplicationController < ActionController::Base
     if admin_signed_in?
       @p = Customer.ransack(params[:q])
       @search = @p.result(distinct: true)
-      @result = params[:q]&.values&.reject(&:blank?)
     else
       @q = Item.ransack(params[:q])
       @search = @q.result(distinct: true)
-      @result = params[:q]&.values&.reject(&:blank?)
     end
+      @result = params[:q]&.values&.reject(&:blank?)
   end
 
 private
