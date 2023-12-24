@@ -6,56 +6,31 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Admin.create!(email: 'admin@a',
-#               password: 'niceadmin'
-#               )
+Admin.create!(email: 'admin@admin.com',
+              password: 'niceadmin'
+              )
 
-# 3.times do |n|
-#   email = "example#{n + 1}@test.com"
-#   Customer.create!(
-#     family_name: "姓#{n + 1}",
-#     first_name: "名#{n + 1}",
-#     family_name_kana: "姓(カナ)#{n + 1}",
-#     first_name_kana: "名（カナ）#{n + 1}",
-#     email: email,
-#     password: "testpass#{n + 1}",
-#     postcode: "111111#{n + 1}",
-#     address: "testaddress#{n + 1}",
-#     telephone_number: "0901234567#{n + 1}",
-#     is_active: true
-#     )
-# end 
+40.times do |n|
+  Customer.create!(
+    family_name: "姓#{n + 11}",
+    first_name: "名#{n + 11}",
+    family_name_kana: "姓(カナ)#{n + 11}",
+    first_name_kana: "名（カナ）#{n + 11}",
+    email: "example#{n + 11}@test.com",
+    password: "testpass#{n + 11}",
+    postcode: "12345#{n + 11}",
+    address: "testaddress#{n + 11}",
+    telephone_number: "090123456#{n + 11}",
+    is_active: true
+    )
+end 
 
-# CartItem.create!(
-#                 item_id: 1,
-#                 customer_id: 1,
-#                 amount: 1
-#                 )
-
-# CartItem.create!(
-#                 item_id: 2,
-#                 customer_id: 1,
-#                 amount: 2
-#                 )
-
-# 3.times do |n|
-#   CartItem.create!(
-#     item_id: n + 1,
-#     customer_id: 1,
-#     amount: 1
-#     )
-#   end
-
-# Address.create!(
-#   customer_id: 1,
-#   postcode: 1234567,
-#   address: "somewhere",
-#   name: "someone"
-#   )
-
-# Address.create!(
-#   customer_id: 2,
-#   postcode: 7654321,
-#   address: "anywhere",
-#   name: "anyone"
-#   )
+Genre.create!(
+  [
+    {name: "ケーキ"},
+    {name: "焼き菓子"},
+    {name: "プリン"},
+    {name: "キャンディ"},
+    {name: "その他"}
+  ]
+)
