@@ -1,0 +1,47 @@
+<div class="container">
+
+  <!--見出しの箱-->
+  <div class="row">
+    <div class="col-4">
+      <h3>商品詳細</h3>
+    </div>
+  </div>
+
+  <!--コンテンツの箱-->
+  <div class="row my-3">
+    <!--画像-->
+    <div class="col-4">
+      <%= image_tag @item.image, class: "w-100" %>
+    </div>
+
+    <!--詳細-->
+    <div class="ml-3 col-2">
+      <%= tag.div "商品名", class:"mb-3" %>
+      <%= tag.div "商品説明", class:"mb-3" %>
+      <%= tag.div "ジャンル", class:"mb-3" %>
+      <%= tag.div "税込価格(税抜価格)", class:"mb-3" %>
+      <%= tag.div "販売ステータス" %>
+    </div>
+    <div class="col-4">
+      <%= tag.div @item.name, class:"mb-3" %>
+      <%= tag.div @item.introduction, class:"mb-3" %>
+      <%= tag.div @item.genre.name, class:"mb-3" %>
+      <div class="mb-3">
+        <%= number_to_currency(@item.taxed_price,unit: "",strip_insignificant_zeros: true) %>
+        (<%= number_to_currency(@item.price,unit: "",strip_insignificant_zeros: true) %>) 円
+      </div>
+      <div class="mb-3">
+      <% if @item.is_active? %>
+        <span class="text-success font-weight-bold"><%= @item.sale_status %></span>
+      <% else %>
+        <span class="text-secondary font-weight-bold"><%= @item.sale_status %></span>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <%= link_to "編集する", edit_admin_item_path(@item),  class: "btn btn-success" %>
+  </div>
+
+</div>

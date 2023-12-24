@@ -1,0 +1,14 @@
+<div class="card mb-3">
+  <div class="card-header">ジャンル検索</div>
+  <div class="card-body">
+    <%= form_with url: genre_search_path, method: :get do |f| %>
+      <div class="genre-list">
+      <% @genres.each do |genre| %>
+        <div class="mb-3">
+          <%= link_to genre.name, genre_search_path(genre_id: genre.id), method: :get %>
+        </div>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

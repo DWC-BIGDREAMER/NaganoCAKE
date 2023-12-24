@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 mx-auto">
+     <%= render 'public/homes/sidebar', genres: @genres %>
+    </div>
+    <div class="col-md-10">
+       <h3 class="text-primary">商品一覧 (全<%= @total_items_count %>件)</h3>
+       <div class="mt-4">
+        <%= render 'index', items: @items %>
+       </div>
+    </div>
+    <div class="col d-flex justify-content-center text-center mt-4">
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>

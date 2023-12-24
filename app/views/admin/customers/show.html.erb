@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+
+      <div class="row justify-content-center">
+
+        <div class="col-lg-2"></div><!--colを改行させるための空col-->
+        <div class="col-sm-auto">
+          <h3 class="bg-light mb-3">　<%= @cus.full_name %>さんの会員詳細　</h3>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-3 col-xs-3"></div><!--colを改行させるための空col-->
+
+        <div class="col-xs-4 my-3 mr-5">
+          <p>会員ID</p>
+          <p>氏名</p>
+          <p>フリガナ</p>
+          <p>郵便番号</p>
+          <p>住所</p>
+          <p>電話番号</p>
+          <p>メールアドレス</p>
+          <p>会員ステータス</p>
+        </div>
+
+        <div class="col-xs-5 my-3">
+          <p><%= @cus.id %></p>
+          <p><%= @cus.full_name %></p>
+          <p><%= @cus.full_name_kana %></p>
+          <p><%= @cus.postcode %></p>
+          <p><%= @cus.address %></p>
+          <p><%= @cus.telephone_number %></p>
+          <p><%= @cus.email %></p>
+          <% if @cus.is_active? %>
+            <p class="text-success font-weight-bold"><%= @cus.cus_status %></p>
+          <% else %>
+            <p class="text-secondary font-weight-bold"><%= @cus.cus_status %></p>
+          <% end %>
+
+          <button class="btn">
+            <%= link_to '編集する', edit_admin_customer_path(@cus), class: "btn btn-success" %>
+          </button>
+          <button class="btn">
+            <%= link_to '注文履歴一覧を見る', admin_orders_path(customer_id: @cus.id), class: "btn btn-primary" %>
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

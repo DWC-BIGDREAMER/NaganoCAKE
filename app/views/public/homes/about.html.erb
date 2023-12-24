@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-10 col-xl-12 text-center">
+      <h1 class="display-2 font-weight-bold">About</h1>
+      <p>
+        ながのCAKEは全国発送可能なケーキ屋さんです。<br>
+        お子様からお年寄りの方までお召し上がりいただけるよう、<br>
+        様々なバリエーションをご用意しております。<br>
+        また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます。<br>
+        ぜひご注文ください。<br>
+      </p>
+       <div id="slideshow" class="mt-4 text-align-center" style="width: 75%; height: 400px; object-fit: cover; display: inline-block;">
+        <img class="slide" src="<%= asset_path('cheese-cake-7896245_640.jpg') %>" alt="Slide 1" style="width: 100%; height: 100%; object-fit: cover;">
+        <img class="slide" src="<%= asset_path('cupcakes-5441972_640.jpg') %>" alt="Slide 2" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+        <img class="slide" src="<%= asset_path('france-confectionery-83373_640.jpg') %>" alt="Slide 3" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+        <img class="slide" src="<%= asset_path('strawberry-cake-3975569_640.jpg') %>" alt="Slide 4" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+        <img class="slide" src="<%= asset_path('sweets-847920_640.jpg') %>" alt="Slide 5" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+      </div>
+    </div>
+  </div>
+</div>
+<%= javascript_include_tag 'slideshow' %>

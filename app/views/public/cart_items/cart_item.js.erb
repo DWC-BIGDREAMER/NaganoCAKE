@@ -1,0 +1,4 @@
+$('#table').html("<%= j(render "table", cart_items: @cart_items) %>");
+$('#empty').html("<%= j(render "empty_cart", disabled: @cart_items.empty?) %>");
+$('#proceed').html("<%= j(render "proceed", disabled: @cart_items.empty?) %>");
+$('#sum').html("<%= j(render "sum", cart_items: @cart_items) %>");
